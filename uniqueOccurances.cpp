@@ -1,46 +1,58 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-bool uniqueOccurances(int arr[],int n){
+bool uniqueOccurances(int arr[], int n)
+{
     int count[n];
-    for(int i=0;i<n;i++){
+    for (int i = 0; i < n; i++)
+    {
         count[i] = 1;
     }
 
-    for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if(arr[i]==arr[j]){
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[i] == arr[j])
+            {
                 count[i]++;
             }
         }
     }
 
-    for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if(count[i]==count[j]){
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (count[i] == count[j])
+            {
                 return false;
             }
         }
     }
 
-    return true;   
-}   
+    return true;
+}
 
-int main(){
+int main()
+{
     int n;
-    cout<<"Enter the length of the array : ";
-    cin>>n;
+    cout << "Enter the length of the array : ";
+    cin >> n;
 
     int arr[n];
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
     }
 
-    if(uniqueOccurances(arr,n)){
-        cout<<"All elements have unique occurances"<<endl;
+    if (uniqueOccurances(arr, n))
+    {
+        cout << "All elements have unique occurances" << endl;
     }
-    else{
-        cout<<"All elements do not have unique occurances"<<endl;
+    else
+    {
+        cout << "All elements do not have unique occurances" << endl;
     }
 
     return 0;
@@ -57,4 +69,3 @@ int main(){
 // If the function goes through all the elements in count[] without finding any two elements with the same count, it returns true. This means that all elements in arr[] have unique occurrences.
 
 // This function has a time complexity of O(n^2) due to the nested for loops. It could be optimized by using a hash map to store the count of occurrences, which would reduce the time complexity to O(n).
-
