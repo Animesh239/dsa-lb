@@ -20,7 +20,7 @@ int peakMountain(int arr[], int n){
             end = mid - 1;
         }
     }
-    return -1;
+    return start;
 }
 
 int main(){
