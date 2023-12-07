@@ -3,11 +3,11 @@
 #include <iostream>
 using namespace std;
 
-int sqRoot(int n)
+int sqRoot(long long int n)
 {
-    int s = 0;
-    int e = n;
-    int mid = s + (e - s) / 2;
+    long long int s = 0;
+    long long int e = n;
+    long long int mid = s + (e - s) / 2;
 
     while (s <= e)
     {
@@ -30,7 +30,7 @@ int sqRoot(int n)
 
 int main()
 {
-    int n;
+    long long int n;
     cin >> n;
 
     cout << sqRoot(n) << endl;
