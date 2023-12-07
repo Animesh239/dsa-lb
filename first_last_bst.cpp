@@ -8,9 +8,9 @@ int firstLastOcc(int arr[], int n, int k){
     int end = n - 1;
     int first = -1;
     int last = -1;
+        int mid = start + (end - start)/2;
 
     while(start <= end){
-        int mid = start + (end - start)/2;
         if(arr[mid] == k){
             first = mid;
             end = mid - 1;
@@ -25,9 +25,9 @@ int firstLastOcc(int arr[], int n, int k){
 
     start = 0;
     end = n - 1;
+        int mid = start + (end - start)/2;
 
     while(start <= end){
-        int mid = start + (end - start)/2;
         if(arr[mid] == k){
             last = mid;
             start = mid + 1;
