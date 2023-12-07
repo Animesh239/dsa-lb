@@ -8,7 +8,7 @@ int peakMountain(int arr[], int n){
     int end = n - 1;
     int mid = start + (end - start)/2;
 
-    while(start <= end){
+    while(start < end){
         mid = start + (end - start)/2;
         if(arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1]){
             return mid;
