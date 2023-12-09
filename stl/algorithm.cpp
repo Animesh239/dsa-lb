@@ -3,7 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <numeric>
+#include <numeric>   // for accumulate
 using namespace std;
 
 int main(){
@@ -43,7 +43,7 @@ int main(){
     cout << endl;
 
     // rotate
-    rotate(v.begin(), v.begin() + 3, v.end());
+    rotate(v.begin(), v.begin() + 3, v.end()); // rotate from 0 to 3
     for(auto i : v)
         cout << i << " ";
     cout << endl;
@@ -60,7 +60,7 @@ int main(){
     cout << "a = " << a << " b = " << b << endl;
 
     // accumulate
-    int sum = accumulate(v.begin(), v.end(), 0);
+    int sum = accumulate(v.begin(), v.end(), 0);  // 0 is initial value
     cout << "sum of vector is " << sum << endl;
 
     // count
@@ -76,29 +76,43 @@ int main(){
 
     // lambda
     auto f = [](int x){return x*x;};
+    cout << f(5) << endl;
 
     // min_element
     auto it3 = min_element(v.begin(), v.end());
+    cout << "min element is " << *it3 << endl;
 
     // max_element
     auto it4 = max_element(v.begin(), v.end());
+    cout << "max element is " << *it4 << endl;
 
     // minmax_element
     auto p = minmax_element(v.begin(), v.end());
+    cout << "min element is " << *p.first << endl;
 
     // accumulate
     int sum1 = accumulate(v.begin(), v.end(), 0);
+    cout << "sum of vector is " << sum1 << endl;
 
     // inner_product
     int inner = inner_product(v.begin(), v.end(), v.begin(), 0);
+    cout << "inner product of vector is " << inner << endl;
 
     // adjacent_difference
     vector<int> v1(10);
-    adjacent_difference(v.begin(), v.end(), v1.begin());
+    adjacent_difference(v.begin(), v.end(), v1.begin()); // 0 is initial value of v1
+    cout << "adjacent difference of vector is ";
+    for(auto i : v1)
+        cout << i << " ";
+    cout << endl;
 
-    // partial_sum
+    // partial_sum : sum of all elements till that point
     vector<int> v2(10);
-    partial_sum(v.begin(), v.end(), v2.begin());
+    partial_sum(v.begin(), v.end(), v2.begin());  // 0 is initial value of v2
+    cout << "partial sum of vector is ";
+    for(auto i : v2)
+        cout << i << " ";
+    cout << endl;
 
     return 0;
 }
