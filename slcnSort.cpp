@@ -3,23 +3,18 @@
 #include <iostream>
 using namespace std;
 
-void selectionSort(int arr[], int n)
-{
-    for (int i = 0; i < n - 1; i++)
-    {
-        // find the smallest element in the unsorted part
-        int minIndex = i;
-        for (int j = i; j < n; j++)
-        {
-            if (arr[j] < arr[minIndex])
-            {
-                minIndex = j;
+void selectionSort(int arr[], int n){
+    for(int i=0; i < n-1 ; i++){
+        int min = i ;
+        for(int j = i ; j < n ; j++){
+            if(arr[j] < arr[min] ){
+                min = j ;
             }
         }
-        // swap the smallest element with the first element of the unsorted part
-        swap(arr[i], arr[minIndex]);
+        swap(arr[i] , arr[min]) ;
     }
 }
+
 
 int main()
 {
