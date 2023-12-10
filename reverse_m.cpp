@@ -26,3 +26,22 @@ int main(){
     return 0;
 
 }
+
+// without using algorithm(reverse)
+
+// void reverse_m(vector<int> &arr, int m){
+//     int start = m;
+//     int end = arr.size()-1;
+
+//     while(start<end){
+//         int temp = arr[start];
+//         arr[start] = arr[end];
+//         arr[end] = temp;
+
+//         // swap(arr[start],arr[end]);
+
+//         start++;
+//         end--;
+
+//     }
+// }
