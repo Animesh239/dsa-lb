@@ -25,11 +25,11 @@ int main()
     
     int i ;
 
-    arr[i] = *(arr + i) = *(ptr + i) = ptr[i] = i[arr] = i[ptr] = i[arr + i] = i[ptr + i] = *(arr + i[arr]) ; 
+    // arr[i] = *(arr + i) = *(ptr + i) = ptr[i] = i[arr] = i[ptr] = i[arr + i] = i[ptr + i] = *(arr + i[arr]) ; 
 
      // char arrays
 
-    char carr[5] = "abcd";
+    char carr[] = "abcd";
     cout << carr << endl; // abcd
     cout << *carr << endl; // a
     cout << *(carr + 3) << endl; // d
