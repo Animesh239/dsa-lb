@@ -7,7 +7,13 @@ int main(){
     int m ;
     cin >> m; // number of rows
 
-    int sizes[3] = {2, 3, 4}; // number of columns in each row
+    // int sizes[3] = {2, 3, 4}; // number of columns in each row
+
+    // allocating sizes[] dynamically
+    int *sizes = new int[m];
+    for(int i = 0; i < m; i++){
+        cin >> sizes[i];
+    }
 
     int **arr = new int *[m]; 
 
@@ -31,6 +37,7 @@ int main(){
     }
 
     // delete the array
+
 
     for(int i = 0; i < m; i++){
         delete [] arr[i];
