@@ -22,6 +22,7 @@ int main(){
 
     int ans = sum(arr , n) ;
 
+    cout << ans << endl ;
 
     return 0 ;
 }
