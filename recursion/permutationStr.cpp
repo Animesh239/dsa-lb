@@ -25,3 +25,15 @@ vector<vector<int>> permute(vector<int>& nums) {
     solve(ans, nums, i);
     return ans;
 }
+
+int main() {
+    vector<int> nums = {1,2,3};
+    vector<vector<int>> ans = permute(nums);
+    for(auto i : ans) {
+        for(auto j : i) {
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
