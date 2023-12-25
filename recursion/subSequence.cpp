@@ -1,36 +1,47 @@
-// find all the subsequence of a string using recursion
+#include <vector>
+#include <iostream>
+#include <string>
+using namespace std;
 
-#include<iostream>
-#include<vector>
-using namespace std ;
+// Function to generate all subsequences of a string
+vector<string> generateSubsequences(string str, int index) {
+    vector<string> subsequences;
 
-vector<string> subsequence(string str, int index){
-    vector<string> allsubsequence ;
-    if(str.size() == index){
-        allsubsequence.push_back("") ;
+    // Base case: if we've reached the end of the string, return an empty subsequence
+    if(index == str.size()) {
+        subsequences.push_back("");
+        return subsequences;
     }
-    else{
-        allsubsequence = subsequence(str, index+1) ;
-        char item = str[index] ;
-        vector<string> moresubsequence ;
-        for(auto subsequence: allsubsequence){
-            string newsubsequence = subsequence ;
-            newsubsequence.push_back(item) ;
-            moresubsequence.push_back(newsubsequence) ;
-        }
-        for(auto subsequence: moresubsequence){
-            allsubsequence.push_back(subsequence) ;
-        }
+
+    // Recursive case: generate all subsequences for the rest of the string
+    subsequences = generateSubsequences(str, index + 1);
+
+    // Get the current character
+    char currentChar = str[index];
+
+    // Create a new list to store subsequences that include the current character
+    vector<string> newSubsequences;
+
+    // Add the current character to each subsequence
+    for(auto subsequence : subsequences) {
+        string newSubsequence = subsequence;
+        newSubsequence.push_back(currentChar);
+        newSubsequences.push_back(newSubsequence);
     }
-    return allsubsequence ;
+
+    // Add the new subsequences to the list of all subsequences
+    subsequences.insert(subsequences.end(), newSubsequences.begin(), newSubsequences.end());
+
+    return subsequences;
 }
 
-int main(){
-    string str = "abc" ;
+int main() {
+    string str = "abc";
+    vector<string> allSubsequences = generateSubsequences(str, 0);
 
-    vector<string> allsubsequence = subsequence(str, 0) ;
-    for(auto subsequence: allsubsequence){
-        cout << subsequence << endl ;
+    // Print all subsequences
+    for(auto subsequence : allSubsequences) {
+        cout << subsequence << endl;
     }
 
     return 0;
