@@ -3,41 +3,33 @@
 #include <string>
 using namespace std;
 
-// Function to generate all subsequences of a string
-vector<string> generateSubsequences(string str, int index) {
-    vector<string> subsequences;
+void solve(vector<string>& ans, string str, string output, int i) {
+    //base case
+    if(i>=str.length()) {
+        if(output.length()>0)
+        ans.push_back(output);
+        return ;
+        }
+    
+    //exclude
+    solve(ans, str, output, i+1);
+    //include
+    output.push_back(str[i]);
+    solve(ans, str, output, i+1);
+}
 
-    // Base case: if we've reached the end of the string, return an empty subsequence
-    if(index == str.size()) {
-        subsequences.push_back("");
-        return subsequences;
-    }
-
-    // Recursive case: generate all subsequences for the rest of the string
-    subsequences = generateSubsequences(str, index + 1);
-
-    // Get the current character
-    char currentChar = str[index];
-
-    // Create a new list to store subsequences that include the current character
-    vector<string> newSubsequences;
-
-    // Add the current character to each subsequence
-    for(auto subsequence : subsequences) {
-        string newSubsequence = subsequence;
-        newSubsequence.push_back(currentChar);
-        newSubsequences.push_back(newSubsequence);
-    }
-
-    // Add the new subsequences to the list of all subsequences
-    subsequences.insert(subsequences.end(), newSubsequences.begin(), newSubsequences.end());
-
-    return subsequences;
+vector<string> subsequences(string str){
+	
+	vector<string> ans;
+    string output = "";
+    solve(ans,str,output,0);
+    return ans;
+	
 }
 
 int main() {
     string str = "abc";
-    vector<string> allSubsequences = generateSubsequences(str, 0);
+    vector<string> allSubsequences = subsequences(str);
 
     // Print all subsequences
     for(auto subsequence : allSubsequences) {
