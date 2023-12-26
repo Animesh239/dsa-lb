@@ -25,7 +25,7 @@ void merge(int *arr, int start, int end)
 
     int i = 0, j = 0, k = start;
 
-    while (i < len1 && j < len2)
+    while (i < len1 && j < len2) 
     {
         if (left[i] <= right[j])
         {
@@ -60,13 +60,13 @@ void mergeSort(int *arr, int start, int end)
     int mid = start + (end - start) / 2;
 
     // left part sort
-    mergeSort(arr, start, mid);
+    mergeSort(arr, start, mid);  // time complexity: T(n/2)
 
     // right part sort
-    mergeSort(arr, mid + 1, end);
+    mergeSort(arr, mid + 1, end);  // time complexity: T(n/2)
 
     // merge both part
-    merge(arr, start, end);
+    merge(arr, start, end);  // time complexity: O(n)
 }
 
 int main()
@@ -85,3 +85,6 @@ int main()
 
     return 0;
 }
+
+
+// time complexity: O(nlogn)
