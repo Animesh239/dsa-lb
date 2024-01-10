@@ -21,7 +21,7 @@ void insertionAtHead(Node** head, int data){
     Node* newNode = new Node();
     newNode->data = data;
     newNode->next = *head;
-    *head = newNode;
+    *head = newNode; // head is now pointing to the new node
 }
 
 void insertionAtTail(Node** head, int data){
