@@ -17,7 +17,7 @@ void printList(Node* n){
 }
 
 // double pointer is used to change the head pointer
-void insertionAtHead(Node** head, int data){
+void insertionAtHead(Node** head, int data){ // here head contains the address of the head pointer, also we are passing the address of the head pointer
     Node* newNode = new Node();
     newNode->data = data;
     newNode->next = *head;
