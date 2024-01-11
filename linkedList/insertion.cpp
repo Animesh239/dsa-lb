@@ -24,16 +24,16 @@ void insertionAtHead(Node** head, int data){ // here head contains the address o
     *head = newNode; // head is now pointing to the new node
 }
 
-void insertionAtTail(Node** head, int data){
+void insertionAtTail(Node** tail, int data){
+
     Node* newNode = new Node();
     newNode->data = data;
     newNode->next = NULL;
 
-    Node* temp = *head;
-    while(temp->next != NULL){
-        temp = temp->next;
-    }
+    Node* temp = *tail; 
     temp->next = newNode;
+    *tail = newNode;
+
 }
 
 void insertionAtPosition(Node** head, int data, int position){
