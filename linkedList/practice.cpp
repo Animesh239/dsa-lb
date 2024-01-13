@@ -1,80 +1,103 @@
+// deletion of a node in a linked list
+
 #include<iostream>
-using namespace std;
+using namespace std ;
 
 class Node{
     public:
         int data ;
-        Node* next;
+        Node* next ;
+
+        Node(int data){
+            this->data = data ;
+            next = NULL ;
+        }
+
+        ~Node(){
+            int value = this->data ;
+            if( this->next != NULL){
+                delete next ;
+                this->next = NULL ;
+            }
+            cout << "Deleting node with value: " << value << endl ;
+        }
 };
 
 void printList(Node* n){
-    while( n != NULL){
+    while( n!= NULL){
         cout << n->data << " " ;
         n = n->next ;
     }
-}
+};
 
-void insertionAtHead(int data , Node** head){
-    Node* newNode = new Node();
-    newNode->data  = data ;
-    newNode->next = *head ;
-    *head = newNode ;
-}
+void deleteNode(int position , Node** head){
+    if(position == 1){
+        Node* temp = *head ;
+        *head = temp->next ;
+        temp->next = NULL ;
+        delete temp ;
+        return ;
+    }
 
-void insertionAtTail(int data , Node** tail){
-    Node* newNode = new Node();
-    newNode->data = data ;
-    newNode->next = NULL ;
-     
-    (*tail)->next = newNode ;
-
-    *tail = newNode ;
-}
-
-void insertionAtPosition(int data , int position , Node** head){
-    Node* newNode = new Node();
-    newNode->data = data ;
-    newNode->next = NULL ;
 
     Node* temp = *head ;
+    Node* prev = NULL ;
+
+    // traverse the list till the node to be deleted
     for(int i = 1 ; i < position ; i++){
+        prev = temp ;
         temp = temp->next ;
     }
-    newNode->next = temp->next ;
-    temp->next = newNode ;
+    // make the previous node point to the next node of the node to be deleted
+    prev->next = temp->next ;
+    temp->next = NULL ;
+    delete temp ;
 }
 
 int main(){
-    Node* head = NULL ;
-    Node* second = NULL ;
-    Node* third = NULL ;
+    Node* head = new Node(1) ;
+    Node* second = new Node(2) ;
+    Node* third = new Node(3) ;
+    Node* fourth = new Node(4) ;
+    Node* fifth = new Node(5) ;
 
-    head = new Node();
-    second = new Node();
-    third = new Node();
-
-    head->data = 1 ;
     head->next = second ;
-
-    second->data = 2 ;
     second->next = third ;
+    third->next = fourth ;
+    fourth->next = fifth ;
 
-    third->data = 3 ;
-    third->next = NULL ;
-
-    printList(head);
+    cout << "Linked list before deletion: " << endl ;
+    printList(head) ;
     cout << endl ;
 
-    insertionAtHead(0 , &head);
-    printList(head);
+    deleteNode(1 , &head) ;
+
+    cout << "Linked list after deletion: " << endl ;
+    printList(head) ;
     cout << endl ;
 
-    insertionAtTail(4 , &third);
-    printList(head);
+    deleteNode(3 , &head) ;
+
+    cout << "Linked list after deletion: " << endl ;
+    printList(head) ;
     cout << endl ;
 
-    insertionAtPosition(5 , 3 , &head);
-    printList(head);
+    deleteNode(4 , &head) ;
+
+    cout << "Linked list after deletion: " << endl ;
+    printList(head) ;
+    cout << endl ;
+
+    deleteNode(2 , &head) ;
+
+    cout << "Linked list after deletion: " << endl ;
+    printList(head) ;
+    cout << endl ;
+
+    deleteNode(1 , &head) ;
+
+    cout << "Linked list after deletion: " << endl ;
+    printList(head) ;
     cout << endl ;
 
     return 0;
