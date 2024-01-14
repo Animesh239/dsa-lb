@@ -49,21 +49,35 @@ void printList(Node* n){
 //     printList(head) ;
 // }
 
-Node* reverseByRecursion(Node* curr, Node* prev) {
-    if (curr == nullptr) {
-        return prev;
+// Node* reverseByRecursion(Node* curr, Node* prev) {
+//     if (curr == nullptr) {
+//         return prev;
+//     }
+
+//     Node* forward = curr->next;
+//     curr->next = prev;
+//     return reverseByRecursion(forward, curr);
+// }
+
+// void solve(Node* &head) {
+//     Node* curr = head;
+//     Node* prev = nullptr;
+//     head = reverseByRecursion(curr, prev);
+// }
+
+// solution in recursion in another approach
+Node* reverse(Node* head){
+    // base case 
+    if(head->next == nullptr || head == NULL){
+        return head ;
     }
-
-    Node* forward = curr->next;
-    curr->next = prev;
-    return reverseByRecursion(forward, curr);
+    // 
+    Node* subHead = reverse(head->next) ;
+    head->next->next = head ;
+    head->next = nullptr ;
+    return subHead ;
 }
 
-void solve(Node* &head) {
-    Node* curr = head;
-    Node* prev = nullptr;
-    head = reverseByRecursion(curr, prev);
-}
 
 int main(){
     Node* head = new Node(1) ;
@@ -78,8 +92,9 @@ int main(){
     fourth->next = fifth ;
 
     printList(head) ;
-    solve(head) ;
-    printList(head) ;
+    printList(reverse(head)) ;
+    // solve(head) ;
+    // printList(head) ;
 
     return 0 ;
 }
