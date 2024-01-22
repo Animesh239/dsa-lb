@@ -35,20 +35,24 @@ class TwoStack{
                 arr[top2] = num;
             }
 
-            void pop1(){
-                if(top1 == -1){
-                    cout << "stack underflow" << endl;
-                    return;
+            int pop1(){
+                if(top1 >= 0){
+                    int ans = arr[top1];
+                    top1--;
+                    return ans;
+                }else{
+                    return -1 ;
                 }
-                top1--;
             }
 
-            void pop2(){
-                if(top2 == size){
-                    cout << "stack underflow" << endl;
-                    return;
+            int pop2(){
+                if(top2 < size){
+                    int ans = arr[top2];
+                    top2++;
+                    return ans;
+                }else{
+                    return -1 ;
                 }
-                top2++;
             }
 } ;
 
